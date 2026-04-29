@@ -58,16 +58,33 @@ function renderizar() {
 
 function avancar() {
   if (index + itensPorTela < api_produtos.length) {
-    index++;
+    index+=itensPorTela;
     renderizar();
   }
 }
 
 function voltar() {
   if (index > 0) {
-    index--;
+    index-=itensPorTela;
     renderizar();
   }
 }
 
 renderizar();
+
+// ===== ANIMAÇÃO TEXTO =====
+const texto = document.querySelector(".animar-texto");
+
+function aparecerTexto() {
+  if (!texto) return;
+
+  const posicao = texto.getBoundingClientRect().top;
+  const alturaTela = window.innerHeight;
+
+  if (posicao < alturaTela - 100) {
+    texto.classList.add("ativo");
+  }
+}
+
+window.addEventListener("scroll", aparecerTexto);
+window.addEventListener("load", aparecerTexto);
