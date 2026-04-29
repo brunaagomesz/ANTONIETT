@@ -1,48 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/style/caneca.css">
-    <link rel="stylesheet" href="./src/style/style.css">
-    <title>Document</title>
-</head>
-<body>
-    <header>
-    <nav id="navbar">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./src/style/caneca.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<header>
+			<img src="" alt="" />
+			<nav id="navbar">
+				<div class="logo-container">
+					<img class="logo_navbar" src="./src/style/img/logoantoniett_n-Photoroom.png" alt="logo" />
+					<span class="nome-marca">ANTONIETT</span>
+				</div>
 
-        <div class="logo-container">
-            <img class="logo_navbar" src="./src/style/img/logoantoniett_n-Photoroom.png" alt="logo">
-            <span class="nome-marca">ANTONIETT</span>
-        </div>
+				<ul id="nav_list">
+					<li class="nav_item active">
+						<a href="index.html#home">Inicio</a>
+					</li>
+					<li class="nav_item">
+						<a href="index.html#on">Sobre</a>
+					</li>
+					<li class="nav_item">
+						<a href="canecas.html">Canecas</a>
+					</li>
+					<li class="nav_item">
+						<a href="index.html#testimonials">Avaliações</a>
+					</li>
+					<li class="nav_item">
+						<a href="index.html#contact">Contato</a>
+					</li>
+				</ul>
 
-        <ul id="nav_list">
-            <li class="nav_item active">
-                <a href="index.html#home">Inicio</a>
-            </li>
-            <li class="nav_item">
-                <a href="index.html#on">Sobre</a>
-            </li>
-            <li class="nav_item">
-                <a href="canecas.html">Canecas</a>
-            </li>
-            <li class="nav_item">
-                <a href="index.html#testimonials">Avaliações</a>
-            </li>
-            <li class="nav_item">
-                <a href="index.html#contact">Contato</a>
-            </li>
-        </ul>
+				<button class="btn-default">Veja Aqui!</button>
 
-        <button class="btn-default">
-            Veja Aqui!
-        </button>
+				<button id="mobile_btn">
+					<i class="fa-solid fa-bars"></i>
+				</button>
+			</nav>
+		</header>
+		<section class="unidades">
+			<div class="unidades_info">
+				<h1>
+					Transforme suas ideias em
+					<span>canecas únicas</span>
+				</h1>
+			</div>
+        </section>    
+		<main>
+			<section class="section-carrossel">
+				<div class="info_cardapio">
+					<h1>ANTONIETT</h1>
+					<h1>Nossos destaques</h1>
+				</div>
 
-        <button id="mobile_btn">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+				<div class="container-wrapper">
+					<div class="container-carrossel" id="cards"></div>
 
-    </nav>
-</header>
-</body>
+					<div class="controles">
+						<button onclick="voltar()"><</button>
+						<button onclick="avancar()">></button>
+					</div>
+				</div>
+			</section>
+
+			<!-- IMAGENS -->
+			<section class="imgs_apresentacoes">
+				<div class="images">
+					<img class="imagem" src="/Projeto-TI/static/img/imagem-apresentacao1.jpg" alt="" />
+					<img class="imagem" src="/Projeto-TI/static/img/imagem-apresentacao2.jpg" alt="" />
+					<img class="imagem" src="/Projeto-TI/static/img/imagem-apresentacao3.jpg" alt="" />
+					<img class="imagem" src="/Projeto-TI/static/img/imagem-apresentacao4.jpg" alt="" />
+				</div>
+			</section>
+		</main>
+
+		<script src="./src/javascript/canecas.js"></script>
+	</body>
 </html>
