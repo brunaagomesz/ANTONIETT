@@ -25,11 +25,12 @@
 }
 
 
-
 header {
     width: 100%;
     padding: 28px 8%;
     background-color: #fffffff6;
+    position: relative;
+    z-index: 999;
 }
 
 #navbar {
@@ -40,13 +41,34 @@ header {
     gap: 8px;
 }
 
- /*ALTERÇÕES NA IMG LOGO*/
-#nav_logo{
+/* CONTAINER DA LOGO (Alinha horizontalmente a imagem com o texto) */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* AJUSTE DO TAMANHO DA IMAGEM DA LOGO */
+.logo_navbar {
+    width: 32px !important;    /* Força o tamanho compacto idêntico ao da Home */
+    height: 32px !important;   /* Mantém a proporção quadrada do ícone */
+    object-fit: contain;
+}
+
+/* ESTILO DO TEXTO DA MARCA */
+.nome-marca {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2E1A2F;
+}
+
+#nav_logo {
     font-size: 20px;
     align-items: center;
     color: #2E1A2F;
 }
 
+/* LISTA DE MENUS */
 #nav_list {
     display: flex;
     list-style: none;
@@ -57,15 +79,16 @@ header {
     text-decoration: none;
     color: #555555;
     font-weight: 600;
+    padding-bottom: 6px;
 }
 
+/* ESTILO DA LINHA PRETA EMBAIXO DO LINK ATIVO */
 .nav_item.active a {
-    color: #555555;
+    color: #1C1C1C;
     border-bottom: 3px solid #4A3A4F;
 }
 
-  /* Escondeu o botão Hamburgue */
-
+/* MOBILE INDISPONÍVEL POR PADRÃO */
 #mobile_btn {
     display: none;
 }
@@ -99,7 +122,6 @@ header {
         flex-direction: column;
         gap: 12px;
         margin: 12px 0px;
-
     }
 
     #mobile_nav_list .nav_item{
