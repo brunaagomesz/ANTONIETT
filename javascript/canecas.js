@@ -1,37 +1,37 @@
 const api_produtos = [
 {
     nome: "Caneca XOXO",
-    Imagem: "./src/style/img/caneca-1.jpg",
+    Imagem: "./src/img/caneca-1.jpg",
 },
 {
     nome: "Caneca I love me",
-    Imagem: "./src/style/img/caneca-5.jpg",
+    Imagem: "./src/img/caneca-5.jpg",
 },
 {
     nome: "Caneca Namorados",
-    Imagem: "./src/style/img/caneca-3.jpg",
+    Imagem: "./src/img/caneca-3.jpg",
 },
 {
     nome: "Caneca A HUG",
-    Imagem: "./src/style/img/caneca-4.jpg",
+    Imagem: "./src/img/caneca-4.jpg",
 },
 {
     nome: "Caneca I love me",
-    Imagem: "./src/style/img/caneca-1.jpg",
+    Imagem: "./src/img/caneca-1.jpg",
 },
 {
    
     nome: "Caneca I love me",
-    Imagem: "./src/style/img/caneca-2.jpg",
+    Imagem: "./src/img/caneca-2.jpg",
 },
 {
     nome: "Caneca Namorados",
-    Imagem: "./src/style/img/caneca-3.jpg",
+    Imagem: "./src/img/caneca-3.jpg",
 },
 {
     
     nome: "Caneca A HUG",
-    Imagem: "./src/style/img/caneca-4.jpg",
+    Imagem: "./src/img/caneca-4.jpg",
 },
 ];
 
