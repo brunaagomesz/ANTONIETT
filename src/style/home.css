@@ -39,7 +39,7 @@
 }
 
 #cta .title span{
-    color: #C8B6C9;
+    color: #a60fcc;
 }
 
 #cta .description{
@@ -71,5 +71,9 @@
     margin-top: -80px;
     width: 650px;
     height: 650px;
+}
+
+.social-media-buttons{
+    color: #a60fcc;
 }
 

@@ -23,7 +23,6 @@ body {
     width: 100%;
     height: 15vh;
     padding: 28px 8%; /* mantém padrão da sua amiga */
-    background-image: url(./img/img-principal_caneca.jpg);
     background-size: cover;
   
 }
