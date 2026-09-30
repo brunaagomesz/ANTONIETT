@@ -50,8 +50,9 @@ function renderizar() {
       <div class="card">
         <h3>${produto.nome}</h3>  
         <div class="img-box">
-          <img src="${produto.Imagem}" alt=""> 
-
+          <img src="${produto.Imagem}" alt="${produto.nome}">
+        </div>
+      </div>
     `;
   });
 }

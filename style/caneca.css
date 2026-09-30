@@ -21,7 +21,7 @@ body {
 /* HEADER */
 .header_canecas {
     width: 100%;
-    height: 15vh;
+    min-height: 15vh; /* min-height deixa o cabeçalho crescer quando o menu mobile abre */
     padding: 28px 8%; /* mantém padrão da sua amiga */
     background-size: cover;
   
