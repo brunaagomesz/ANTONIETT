@@ -4,11 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link rel="stylesheet" href="style/caneca.css">
-        <link rel="stylesheet" href="style/contato.css">
+        <link rel="stylesheet" href="style/produtos.css">
+        <link rel="stylesheet" href="style/pedidos.css">
         <link rel="stylesheet" href="style/header.css">
         <link rel="stylesheet" href="style/home.css">
-        <link rel="stylesheet" href="style/sobre.css">
         <link rel="stylesheet" href="style/style.css">
 
         <title>ANTONIETT</title>
@@ -22,31 +21,33 @@
                 </div>
 
                 <ul id="nav_list">
-                    <li class="nav_item">
+                    <li class="nav_item active">
                         <a href="./index.html">Início</a>
                     </li>
                     <li class="nav_item">
-                        <a href="./sobre.html">Sobre</a>
-                    </li>
-                    <li class="nav_item active">
-                        <a href="./canecas.html">Canecas</a>
+                        <a href="./produtos.html">Produtos</a>
                     </li>
                     <li class="nav_item">
-                        <a href="./contato.html">Contato</a>
+                        <a href="./pedidos.html">Pedidos</a>
                     </li>
                 </ul>
 
-                <!-- Botão Peça aqui -->
+                <!-- Login e compras -->
+                <div class="login">
                 <button class="btn-default">
-                    Veja Aqui!
+                    <img class="logo_navbar" src="./src/img/do-utilizador.png" alt="icon de login">
+                </button>
+
+                <button class="btn-default">
+                    <img class="logo_navbar" src="./src/img/carrinho-de-compras.png" alt="imagem de um carrinho de compras">
                 </button>
 
                 <!-- Botão Menu Hamburguer -->
                 <button id="mobile_btn" aria-label="Abrir menu" aria-controls="mobile_menu" aria-expanded="false">
                     <i class="fa-solid fa-bars"></i>
                 </button>
+                </div>
             </nav>
-
             <!-- Versão Hamburguer Mobile -->
             <div id="mobile_menu">
                 <ul id="mobile_nav_list">
@@ -56,10 +57,10 @@
                     <li class="nav_item">
                         <a href="./sobre.html">Sobre</a>
                     </li>
-                    <li class="nav_item active">
+                    <li class="nav_item">
                         <a href="./canecas.html">Canecas</a>
                     </li>
-                    <li class="nav_item">
+                    <li class="nav_item active">
                         <a href="./contato.html">Contato</a>
                     </li>
                 </ul>
@@ -70,105 +71,41 @@
             </div>
         </header>
 
-    <section class="hero">
-			<div class="text_apresentacao">
-				<h4>PERSONALIZE DO SEU JEITO</h4>
+    <main id="content">
+        <section class="contact-container">
+            <div class="contact-text">
+                <span class="contact-tag">CONTATO</span>
+                <h2>Fale com a ANTONIETT</h2>
+                <p class="contact-description">
+                    Entre em contato conosco para dúvidas, sugestões ou pedidos personalizados.
+                </p>
 
-				<h1>
-					Transforme suas ideias em
-					<span>canecas únicas</span>
-				</h1>
+                <div class="contact-info">
+                    <p><i class="fa-solid fa-phone"></i> (51)99999-9999</p>
+                    <p><i class="fa-solid fa-envelope"></i> contato@antoniett.com</p>
+                </div>
 
-				<p>
-					Crie canecas exclusivas com qualidade premium, personalização completa e um design moderno
-					pensado especialmente para você.
-				</p>
+                <form id="contact_form">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" name="name" required>
 
-				<div class="mini-info">
-					<span>✔ Personalizadas</span>
-					<span>✔ Alta qualidade</span>
-					<span>✔ Entrega rápida</span>
-				</div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
 
-				<button class="btn-hero">Adquira já</button>
-			</div>
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" required></textarea>
 
-			<div class="background-video">
-				<div class="blur"></div>
+                    <button type="submit" class="btn-default">
+                        Enviar
+                    </button>
+                </form>
+            </div>
 
-				<video class="video_caneca" autoplay muted loop playsinline controls>
-    				<source src="./src/img/8540516-hd_1920_1080_30fps.mp4" type="video/mp4">
-				</video>
-			</div>
-		</section>
-		<section class="como-funciona">
-			<h1>Como funciona?</h1>
-
-			<div class="passos">
-				<div class="passo">
-					<span>01</span>
-
-					<h3>Escolha sua caneca</h3>
-
-					<p>Escolha o modelo ideal entre nossas opções.</p>
-				</div>
-
-				<div class="passo">
-					<span>02</span>
-
-					<h3>Personalize</h3>
-
-					<p>Envie sua arte, frase ou ideia criativa.</p>
-				</div>
-
-				<div class="passo">
-					<span>03</span>
-
-					<h3>Receba em casa</h3>
-
-					<p>Produzimos e entregamos com rapidez.</p>
-				</div>
-			</div>
-		</section>
-		<section class="unidades">
-			<div class="unidades_info">
-				<h1 class="animar-texto">
-					Transforme suas ideias em
-					<span>canecas únicas</span>
-				</h1>
-			</div>
-		</section>
-		<section class="painel">
-			<div class="images">
-				<div class="img1">
-					<img src="./src/img/img-principal_caneca.jpg" alt="" />
-				</div>
-				<div class="img2">
-					<img src="./src/img/img2.jpg" alt="" />
-				</div>
-				<div class="img3">
-					<img src="./src/img/img3.jpg" alt="" />
-				</div>
-			</div>
-		</section>
-
-		<main>
-			<section class="section-carrossel">
-				<div class="info_cardapio">
-					<h1>ANTONIETT</h1>
-					<h1>Nossos destaques</h1>
-				</div>
-
-				<div class="container-wrapper">
-					<div class="container-carrossel" id="cards"></div>
-
-					<div class="controles">
-						<button onclick="voltar()" aria-label="Anterior">&lt;</button>
-						<button onclick="avancar()" aria-label="Próximo">&gt;</button>
-					</div>
-				</div>
-			</section>
-		</main>
+            <div class="contact-image">
+                <img src="src/img/imagem_contato.jpg" alt="Imagem contato">
+            </div>
+        </section>
+    </main>
 
         <!-- ================= FOOTER ================= -->
         <footer class="footer">
@@ -222,6 +159,5 @@
             </div>
         </footer>
         <script src="./javascript/script.js"></script>
-        <script src="./javascript/canecas.js"></script>
     </body>
 </html>

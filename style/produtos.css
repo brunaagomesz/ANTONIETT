@@ -42,7 +42,13 @@ body {
 }
 
 .logo_navbar {
-    width: 50px; /* igual ao original */
+    width: 10px;
+}
+
+.login{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .nome-marca {
