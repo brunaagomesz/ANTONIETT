@@ -56,6 +56,61 @@ body {
     font-weight: bold;
 }
 
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 40px 8%;
+}
+
+.card-produto {
+    background-color: var(--color-surface-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.card-produto:hover {
+    transform: translateY(-4px);
+}
+
+.card-produto img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.card-info {
+    padding: 16px;
+}
+
+.card-info h3 {
+    font-size: 16px;
+    color: var(--color-text-primary);
+    margin: 0 0 4px;
+}
+
+.card-info p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* Responsivo */
+@media screen and (max-width: 900px) {
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .produtos-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 /* ================= HERO ================= */
 

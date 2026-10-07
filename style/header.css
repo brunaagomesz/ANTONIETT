@@ -55,6 +55,18 @@ header {
     object-fit: contain;
 }
 
+.menu-item.active {
+  font-weight: 600;
+}
+
+.menu-item.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 /* ESTILO DO TEXTO DA MARCA */
 .nome-marca {
     font-size: 20px;
