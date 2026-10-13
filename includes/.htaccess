@@ -1,0 +1,3 @@
+# Bloqueia o acesso direto pelo navegador aos arquivos desta pasta.
+# As páginas continuam usando estes arquivos com require, porque o require lê o arquivo no servidor.
+Require all denied
