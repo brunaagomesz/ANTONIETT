@@ -40,9 +40,15 @@ $itensMenu = [
                 </div>
 
                 <ul id="nav_list">
-                    <?php // O item da página atual recebe a classe "active", que desenha o sublinhado ?>
                     <?php foreach ($itensMenu as $chave => $item): ?>
-                        <li class="nav_item <?= $chave === $paginaAtual ? 'active' : '' ?>">
+                        <?php
+                        // O item da página atual recebe a classe "active", que desenha o sublinhado
+                        $classe = 'nav_item';
+                        if ($chave === $paginaAtual) {
+                            $classe = 'nav_item active';
+                        }
+                        ?>
+                        <li class="<?= $classe ?>">
                             <a href="<?= $item['link'] ?>"><?= $item['texto'] ?></a>
                         </li>
                     <?php endforeach; ?>
@@ -63,7 +69,13 @@ $itensMenu = [
             <div id="mobile_menu">
                 <ul id="mobile_nav_list">
                     <?php foreach ($itensMenu as $chave => $item): ?>
-                        <li class="nav_item <?= $chave === $paginaAtual ? 'active' : '' ?>">
+                        <?php
+                        $classe = 'nav_item';
+                        if ($chave === $paginaAtual) {
+                            $classe = 'nav_item active';
+                        }
+                        ?>
+                        <li class="<?= $classe ?>">
                             <a href="<?= $item['link'] ?>"><?= $item['texto'] ?></a>
                         </li>
                     <?php endforeach; ?>
