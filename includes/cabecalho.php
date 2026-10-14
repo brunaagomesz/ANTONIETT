@@ -7,11 +7,11 @@
  *   $paginaAtual   chave do item do menu que fica marcado como ativo, por exemplo "canecas"
  */
 
-// Itens do menu: a chave identifica a página e o valor guarda o link e o texto.
-// Para adicionar uma página ao menu, basta acrescentar uma linha aqui.
 // Só quem fez login vê as páginas da loja
 require 'includes/autenticacao.php';
 
+// Itens do menu: a chave identifica a página e o valor guarda o link e o texto.
+// Para adicionar uma página ao menu, basta acrescentar uma linha aqui.
 $itensMenu = [
     'inicio'  => ['link' => './index.php',   'texto' => 'Início'],
     'sobre'   => ['link' => './sobre.php',   'texto' => 'Sobre'],
@@ -35,7 +35,7 @@ $itensMenu = [
         <title><?= $tituloPagina ?> | ANTONIETT</title>
     </head>
     <body>
-                <header class="header_canecas">
+        <header class="header_canecas">
             <nav id="navbar">
                 <!-- Botão que abre o menu lateral (ícone de três barras) -->
                 <button id="botao_menu" aria-label="Abrir menu" aria-controls="menu_lateral" aria-expanded="false">
