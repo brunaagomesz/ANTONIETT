@@ -1,0 +1,15 @@
+# Arquivos listados aqui nunca vão para o GitHub.
+
+# Arquivos de teste temporários
+teste.php
+teste-conexao.php
+
+# Arquivos que o Windows cria sozinho nas pastas
+Thumbs.db
+desktop.ini
+
+# Configurações pessoais do VS Code de cada um
+.vscode/
+
+# Arquivos de log
+*.log
