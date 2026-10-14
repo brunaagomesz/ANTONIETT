@@ -204,6 +204,22 @@ input[aria-invalid="true"] { border-color: var(--erro); } /* borda vermelha quan
 }
 .sucesso a { color: #1B6B3A; margin-left: 6px; }
 
+/* Mensagens embaixo de cada campo (usadas no cadastro) */
+.dica-campo,
+.erro-campo {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+}
+.dica-campo { color: var(--texto-suave); }
+.erro-campo { color: var(--erro); font-weight: 700; }
+.link-erro {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--roxo-escuro);
+    text-underline-offset: 3px;
+}
+
 /* ---------- Links e rodapé ---------- */
 .troca { margin: 0; font-size: 16px; color: var(--texto-suave); }
 .troca a {

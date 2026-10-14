@@ -13,7 +13,7 @@ const botaoMostrar = document.getElementById('mostrar-senha');
 const formulario = document.getElementById('form-login');
 
 // O PHP escreve o resultado do login nos atributos data-* do <body>
-const resultado = document.body.dataset.estado;            // '', 'erro', 'bloqueado' ou 'sucesso'
+const resultado = document.body.dataset.estado;            // '', 'erro', 'bloqueado', 'sucesso' ou 'cadastrado'
 const tentativas = Number(document.body.dataset.tentativas);
 let segundosDeEspera = Number(document.body.dataset.segundos);
 
@@ -120,6 +120,15 @@ if (resultado === 'erro') {
         botao.textContent = `Aguarde ${segundosDeEspera}s`;
         detalhe.textContent = `Espere ${segundosDeEspera} segundos para tentar de novo.`;
     }, 1000);
+
+} else if (resultado === 'cadastrado') {
+    // Acabou de criar a conta: comemora e depois espera a senha
+    humor.modo = 'sucesso';
+    humor.pulo = 1;
+    setTimeout(() => {
+        humor.modo = 'normal';
+        senha.focus(); // o e-mail já vem preenchido, falta só a senha
+    }, 2500);
 
 } else if (resultado === 'sucesso') {
     // Comemora e segue para a loja

@@ -10,10 +10,13 @@
 // 1. Dados da conexão.
 // São os valores padrão do XAMPP. Se o MySQL de alguém tiver outra senha,
 // é só mudar aqui.
-$servidor = 'localhost';   // onde o MySQL está rodando: no próprio computador
-$banco    = 'login_db';    // nome do banco criado no phpMyAdmin
-$usuario  = 'root';        // usuário padrão do MySQL no XAMPP
-$senha    = '';            // no XAMPP, o usuário root vem sem senha
+//
+// Atenção: os nomes terminam em "DoBanco" de propósito. O require cola este arquivo
+// dentro da página, então uma variável chamada só $senha apagaria a $senha do formulário.
+$servidorDoBanco = 'localhost';  // onde o MySQL está rodando: no próprio computador
+$nomeDoBanco     = 'login_db';   // nome do banco criado no phpMyAdmin
+$usuarioDoBanco  = 'root';       // usuário padrão do MySQL no XAMPP
+$senhaDoBanco    = '';           // no XAMPP, o usuário root vem sem senha
 
 // 2. Tenta abrir a conexão.
 // O "try" significa: tente fazer o que está aqui dentro.
@@ -22,7 +25,7 @@ try {
     // PDO é a ferramenta do PHP que conversa com o banco de dados.
     // O primeiro texto diz o tipo de banco (mysql), onde ele está, qual banco usar
     // e o conjunto de caracteres (utf8mb4 aceita acentos e cedilha).
-    $conexao = new PDO("mysql:host=$servidor;dbname=$banco;charset=utf8mb4", $usuario, $senha);
+    $conexao = new PDO("mysql:host=$servidorDoBanco;dbname=$nomeDoBanco;charset=utf8mb4", $usuarioDoBanco, $senhaDoBanco);
 
     // Pede para o PDO avisar quando uma consulta der erro, em vez de falhar em silêncio.
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -49,10 +49,18 @@ if (isset($_SESSION['bloqueado_ate'])) {
 }
 
 // Estas variáveis decidem o que aparece na tela
-$estado = '';         // '' (normal), 'erro', 'bloqueado' ou 'sucesso'. O mascote reage a isso.
+$estado = '';         // '' (normal), 'erro', 'bloqueado', 'sucesso' ou 'cadastrado'. O mascote reage a isso.
 $mensagem = '';       // título do aviso
 $detalhe = '';        // texto menor do aviso
 $emailDigitado = '';  // o e-mail volta para o campo, para a pessoa não precisar digitar de novo
+
+// Aviso deixado pelo cadastro.php ("Conta criada!"). Aparece uma vez só e é apagado.
+$avisoCadastro = $_SESSION['aviso_login'] ?? '';
+if ($avisoCadastro) {
+    $emailDigitado = $_SESSION['email_cadastrado'] ?? '';
+    unset($_SESSION['aviso_login'], $_SESSION['email_cadastrado']);
+    $estado = 'cadastrado'; // o mascote comemora a conta nova
+}
 
 /* ---------- Formulário enviado ---------- */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -171,6 +179,10 @@ $temAviso = ($estado === 'erro' || $estado === 'bloqueado');
                         <?php endif; ?>
                     </div>
                 </div>
+            <?php endif; ?>
+
+            <?php if ($estado === 'cadastrado'): ?>
+                <p class="sucesso" role="status"><?= escapar($avisoCadastro) ?></p>
             <?php endif; ?>
 
             <?php if ($estado === 'sucesso'): ?>
