@@ -1,0 +1,240 @@
+/* ==========================================================
+   Tela de login
+   Esquerda: palco com a caneca mascote em 3D.
+   Direita: formulário. No celular, o palco fica em cima.
+   ========================================================== */
+
+/* ---------- Cores e fontes ---------- */
+:root {
+    --palco: #F1EEE9;        /* fundo do palco: branco gatinho (aproximado) */
+    --papel: #FBFAF8;        /* fundo do formulário */
+    --ameixa: #2E1A2F;       /* cor principal da marca */
+    --roxo: #A60FCC;         /* botões */
+    --roxo-escuro: #7E0A9C;
+    --texto: #1F1221;
+    --texto-suave: #5A4A5D;
+    --erro: #C62828;
+
+    --titulo: "Bricolage Grotesque", "Segoe UI", Roboto, sans-serif;
+    --corpo: "DM Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; } /* garante que elementos com hidden fiquem escondidos */
+::selection { background: var(--roxo); color: #fff; }
+
+html, body { height: 100%; }
+
+body {
+    margin: 0;
+    background: var(--palco);
+    color: var(--texto);
+    font-family: var(--corpo);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Divide a tela em duas colunas */
+.tela {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(360px, 1fr);
+}
+
+/* ---------- Palco do mascote ---------- */
+.palco {
+    position: relative;
+    min-height: 640px;
+    background: var(--palco);
+    overflow: hidden;
+}
+
+/* O canvas é onde a Three.js desenha a caneca */
+.palco canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Foto que aparece se o navegador não tiver suporte a 3D */
+.sem-3d {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+}
+.sem-3d img { max-width: min(380px, 80%); border-radius: 24px; }
+
+/* ---------- Formulário ---------- */
+.lado-form {
+    background: var(--papel);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 56px 24px 32px;
+}
+
+.form-dentro {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+h1 {
+    margin: 0;
+    font-family: var(--titulo);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 4.6vw, 3.8rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--ameixa);
+    text-wrap: balance;
+}
+
+.intro {
+    margin: 12px 0 0;
+    color: var(--texto-suave);
+    font-size: 17px;
+}
+
+form { display: flex; flex-direction: column; gap: 16px; }
+.campo { display: flex; flex-direction: column; gap: 6px; }
+.linha-senha { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+label { font-weight: 700; font-size: 14px; color: var(--ameixa); }
+
+input {
+    width: 100%;
+    font: 400 17px var(--corpo);
+    color: var(--texto);
+    background: #fff;
+    border: 2px solid #DCCFDE;
+    border-radius: 14px;
+    padding: 13px 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+input::placeholder { color: #8A7A8D; }
+input:focus { border-color: var(--roxo); box-shadow: 0 0 0 4px rgba(166, 15, 204, 0.18); }
+input[aria-invalid="true"] { border-color: var(--erro); } /* borda vermelha quando há erro */
+
+/* Botão "Mostrar senha" */
+.mostrar {
+    font: 700 13px var(--corpo);
+    color: var(--roxo-escuro);
+    background: none;
+    border: none;
+    padding: 2px 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.mostrar:focus-visible { outline: 2px solid var(--roxo); outline-offset: 2px; border-radius: 4px; }
+
+/* Botão "Entrar" */
+.botao {
+    margin-top: 6px;
+    font: 700 17px var(--corpo);
+    color: #fff;
+    background: var(--roxo);
+    border: none;
+    border-radius: 14px;
+    padding: 15px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+.botao:hover { background: var(--roxo-escuro); }
+.botao:active { transform: scale(0.98); }
+.botao:focus-visible { outline: 3px solid var(--ameixa); outline-offset: 3px; }
+.botao:disabled { cursor: not-allowed; background: #9C7AA6; }
+
+/* Bolinha girando enquanto o formulário é enviado */
+.girando {
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: girar 0.8s linear infinite;
+}
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* ---------- Avisos ---------- */
+.aviso-erro {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: #FDECEC;
+    color: var(--erro);
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 15px;
+}
+.aviso-erro svg { flex: none; margin-top: 2px; }
+.aviso-erro strong { display: block; }
+
+/* Contador de tentativas: uma marca por tentativa errada */
+.contador { display: flex; gap: 6px; margin-top: 6px; }
+.contador span {
+    width: 26px;
+    height: 8px;
+    border-radius: 4px;
+    background: #F2C9C9;
+}
+.contador span.usada { background: var(--erro); }
+
+.sucesso {
+    margin: 0;
+    background: #E9F7EE;
+    color: #1B6B3A;
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-weight: 700;
+}
+.sucesso a { color: #1B6B3A; margin-left: 6px; }
+
+/* ---------- Links e rodapé ---------- */
+.troca { margin: 0; font-size: 16px; color: var(--texto-suave); }
+.troca a {
+    color: var(--roxo-escuro);
+    font-weight: 700;
+    text-underline-offset: 4px;
+}
+
+.rodape-form {
+    margin-top: 8px;
+    padding-top: 18px;
+    border-top: 1px solid #E3D8E5;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+.rodape-form p { margin: 0; }
+.legal { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.legal a { color: var(--texto-suave); text-underline-offset: 4px; }
+
+/* ---------- Celular ---------- */
+@media (max-width: 860px) {
+    .tela { grid-template-columns: minmax(0, 1fr); }
+    .palco { min-height: 420px; }
+    .lado-form { padding: 32px 20px 28px; }
+}
+
+/* Para quem prefere menos movimento (configuração do sistema) */
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    .girando { animation-duration: 2.4s; }
+}
