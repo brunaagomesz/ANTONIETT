@@ -68,64 +68,151 @@ header {
     color: #2E1A2F;
 }
 
-/* LISTA DE MENUS */
-#nav_list {
+/* ---------- BOTÕES DE ABRIR (☰) E FECHAR (X) O MENU ---------- */
+#botao_menu,
+#fechar_menu {
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: var(--color-brand-primary);
+    cursor: pointer;
+    padding: 6px;
+}
+
+/* ---------- FUNDO ESCURO ATRÁS DO MENU ---------- */
+#fundo_menu {
+    position: fixed;      /* fica parado na tela, mesmo rolando a página */
+    inset: 0;             /* cobre a tela inteira (top, right, bottom e left = 0) */
+    background-color: rgba(28, 28, 28, 0.45); /* preto com 45% de opacidade */
+    z-index: 1000;        /* fica na frente da página (o header usa 999) */
+
+    /* Começa invisível */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* ---------- MENU LATERAL ---------- */
+#menu_lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    max-width: 85%;       /* no celular, não cobre a tela toda */
+    height: 100%;
+    z-index: 1001;        /* fica na frente do fundo escuro */
+    background-color: var(--color-surface-secondary);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    padding: 24px;
+
+    /* Organiza o conteúdo em coluna: topo, lista e botão Sair */
     display: flex;
-    list-style: none;
-    gap: 48px;
+    flex-direction: column;
+    gap: 24px;
+
+    /* Começa escondido: empurrado 100% da própria largura para a esquerda */
+    transform: translateX(-100%);
+    visibility: hidden;   /* além de sumir, impede que o Tab do teclado entre no menu fechado */
+    transition: transform 0.3s ease, visibility 0.3s;
 }
 
-.nav_item a {
+/* ---------- MENU ABERTO ---------- */
+/* Quando o JavaScript coloca a classe "menu_aberto" no <body>, o menu e o fundo aparecem */
+body.menu_aberto #menu_lateral {
+    transform: translateX(0); /* volta para a posição normal, dentro da tela */
+    visibility: visible;
+}
+
+body.menu_aberto #fundo_menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Com o menu aberto, a página de trás não rola */
+body.menu_aberto {
+    overflow: hidden;
+}
+
+/* ---------- CONTEÚDO DO MENU ---------- */
+.menu_topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* saudação na esquerda, X na direita */
+}
+
+.menu_saudacao {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-brand-primary);
+}
+
+.menu_lista {
+    list-style: none; /* tira as bolinhas da lista */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu_item a {
+    display: block;   /* o link ocupa a linha inteira, fica mais fácil de clicar */
+    padding: 12px 14px;
+    border-radius: 10px;
     text-decoration: none;
-    color: #555555;
+    color: var(--color-text-secondary);
     font-weight: 600;
-    padding-bottom: 6px;
+    font-size: 17px;
 }
 
-/* ESTILO DA LINHA PRETA EMBAIXO DO LINK ATIVO */
-.nav_item.active a {
-    color: #1C1C1C;
-    border-bottom: 3px solid #4A3A4F;
+.menu_item a:hover {
+    background-color: var(--color-surface-primary);
 }
 
-/* MOBILE INDISPONÍVEL POR PADRÃO */
-#mobile_btn {
-    display: none;
+/* Página atual: fundo escuro e texto branco */
+.menu_item.ativo a {
+    background-color: var(--color-brand-primary);
+    color: #fff;
 }
 
-#mobile_menu {
-    display: none;
+/* ---------- BOTÃO SAIR ---------- */
+.menu_sair {
+    margin-top: auto; /* empurra o botão para o fim do menu */
 }
 
-@media screen and (max-width: 1170px ) {
-    #nav_list ,
-    #navbar .btn-default {
-        display: none;
-    }
-    
-    #mobile_btn {
-        display: block;
-        border: none;
-        background-color: transparent;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
+.menu_sair button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    font: inherit;    /* usa a mesma fonte do resto da página */
+    font-weight: 600;
+    color: var(--color-brand-primary);
+    background-color: transparent;
+    border: 2px solid var(--color-brand-primary);
+    border-radius: 10px;
+    cursor: pointer;
+}
 
-    #mobile_menu.active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.menu_sair button:hover {
+    background-color: var(--color-brand-primary);
+    color: #fff;
+}
 
-    #mobile_nav_list {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin: 12px 0px;
-    }
+/* Contorno visível para quem navega pelo teclado (Tab) */
+#menu_lateral a:focus-visible,
+#menu_lateral button:focus-visible,
+#botao_menu:focus-visible {
+    outline: 3px solid var(--color-accent-soft);
+    outline-offset: 2px;
+}
 
-    #mobile_nav_list .nav_item{
-        list-style: none;
-        text-align: center;   
+/* Para quem desativou animações no sistema: o menu aparece sem deslizar */
+@media (prefers-reduced-motion: reduce) {
+    #menu_lateral,
+    #fundo_menu {
+        transition: none;
     }
 }

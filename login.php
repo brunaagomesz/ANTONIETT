@@ -154,8 +154,7 @@ $temAviso = ($estado === 'erro' || $estado === 'bloqueado');
     <main class="lado-form">
         <div class="form-dentro">
             <div>
-                <h1>Bem-vindo de volta</h1>
-                <p class="intro">Entre para escolher a frase da sua próxima caneca.</p>
+                <h1>Bem-vindo</h1>
             </div>
 
             <?php if ($temAviso): ?>

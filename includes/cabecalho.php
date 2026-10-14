@@ -9,6 +9,9 @@
 
 // Itens do menu: a chave identifica a página e o valor guarda o link e o texto.
 // Para adicionar uma página ao menu, basta acrescentar uma linha aqui.
+// Só quem fez login vê as páginas da loja
+require 'includes/autenticacao.php';
+
 $itensMenu = [
     'inicio'  => ['link' => './index.php',   'texto' => 'Início'],
     'sobre'   => ['link' => './sobre.php',   'texto' => 'Sobre'],
@@ -32,57 +35,60 @@ $itensMenu = [
         <title><?= $tituloPagina ?> | ANTONIETT</title>
     </head>
     <body>
-        <header class="header_canecas">
+                <header class="header_canecas">
             <nav id="navbar">
+                <!-- Botão que abre o menu lateral (ícone de três barras) -->
+                <button id="botao_menu" aria-label="Abrir menu" aria-controls="menu_lateral" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
                 <div class="logo-container">
                     <img class="logo_navbar" src="./src/img/logoantoniett_n-Photoroom.png" alt="" />
                     <span class="nome-marca">ANTONIETT</span>
                 </div>
 
-                <ul id="nav_list">
-                    <?php foreach ($itensMenu as $chave => $item): ?>
-                        <?php
-                        // O item da página atual recebe a classe "active", que desenha o sublinhado
-                        $classe = 'nav_item';
-                        if ($chave === $paginaAtual) {
-                            $classe = 'nav_item active';
-                        }
-                        ?>
-                        <li class="<?= $classe ?>">
-                            <a href="<?= $item['link'] ?>"><?= $item['texto'] ?></a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-
-                <!-- Botão Peça aqui -->
+                <!-- Botão da direita: depois vira o carrinho de compras -->
                 <button class="btn-default">
                     Veja Aqui!
-                </button>
-
-                <!-- Botão Menu Hamburguer -->
-                <button id="mobile_btn" aria-label="Abrir menu" aria-controls="mobile_menu" aria-expanded="false">
-                    <i class="fa-solid fa-bars"></i>
                 </button>
             </nav>
+        </header>
 
-            <!-- Versão Hamburguer Mobile: usa a mesma lista de itens do menu acima -->
-            <div id="mobile_menu">
-                <ul id="mobile_nav_list">
-                    <?php foreach ($itensMenu as $chave => $item): ?>
-                        <?php
-                        $classe = 'nav_item';
-                        if ($chave === $paginaAtual) {
-                            $classe = 'nav_item active';
-                        }
-                        ?>
-                        <li class="<?= $classe ?>">
-                            <a href="<?= $item['link'] ?>"><?= $item['texto'] ?></a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+        <!-- Fundo escuro que aparece atrás do menu. Clicar nele fecha o menu. -->
+        <div id="fundo_menu"></div>
 
-                <button class="btn-default">
-                    Veja Aqui!
+        <!-- Menu lateral: fica escondido fora da tela até a pessoa clicar no botão de três barras -->
+        <aside id="menu_lateral" aria-label="Menu">
+            <div class="menu_topo">
+                <!-- htmlspecialchars protege a página caso o nome tenha caracteres especiais, como < ou " -->
+                <span class="menu_saudacao">Olá, <?= htmlspecialchars($_SESSION['cliente_nome']) ?></span>
+
+                <button id="fechar_menu" aria-label="Fechar menu">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-        </header>
+
+            <ul class="menu_lista">
+                <?php foreach ($itensMenu as $chave => $item): ?>
+                    <?php
+                    // O item da página atual recebe a classe "ativo", para aparecer destacado
+                    $classe = 'menu_item';
+                    if ($chave === $paginaAtual) {
+                        $classe = 'menu_item ativo';
+                    }
+                    ?>
+                    <li class="<?= $classe ?>">
+                        <a href="<?= $item['link'] ?>"><?= $item['texto'] ?></a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+
+            <!-- Sair: é um formulário (POST com token), por segurança. Veja o sair.php. -->
+            <form method="post" action="sair.php" class="menu_sair">
+                <input type="hidden" name="token" value="<?= htmlspecialchars($_SESSION['token']) ?>">
+                <button type="submit">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Sair
+                </button>
+            </form>
+        </aside>
